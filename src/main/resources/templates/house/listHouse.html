@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List House</title>
+</head>
+<body>
+<a href="/houses/addHouse">Create House</a>
+<th:block th:if="${#lists.isEmpty(houses)}">
+    <h1>No Houses</h1>
+</th:block>
+<th:block th:unless="${#lists.isEmpty(houses)}">
+    <table border="1">
+        <tr>
+            <th>#</th>
+            <th>Name House</th>
+            <th>Address</th>
+            <th>Type House</th>
+            <th>Type Room</th>
+            <th>Describe Room</th>
+            <th>Amount Bed Room</th>
+            <th>Amount Bath Room</th>
+            <th>Amount Night</th>
+            <th>Edit House</th>
+            <th>Delete House</th>
+        </tr>
+        <tr th:each="house,iterStat : ${houses}">
+            <td th:text="${iterStat.count}"></td>
+            <td th:text="${house.nameHouse}"></td>
+            <td th:text="${house.address}"></td>
+            <td th:text="${house.typeHouse}"></td>
+            <td th:text="${house.typeRoom}"></td>
+            <td th:text="${house.describeRoom}"></td>
+            <td th:text="${house.amountBedRoom}"></td>
+            <td th:text="${house.amountBathRoom}"></td>
+            <td th:text="${house.amountNight}"></td>
+            <td>
+                <a th:href="@{/editHouse/__${house.id}__}">Edit House</a>
+            </td>
+            <td>
+                <a th:href="@{/deleteHouse/__${house.id}__}">Delete House</a>
+            </td>
+            <td>
+                <a th:href="@{/viewHouse/__${house.id}__/view}">View House</a>
+            </td>
+        </tr>
+    </table>
+</th:block>
+
+</body>
+</html>

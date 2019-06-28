@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View House</title>
+</head>
+<body>
+    <h1>View House</h1>
+    <div th:each="house : ${houses}">
+        <div>
+            <label>Name House</label>
+            <label th:text="${}"></label>
+        </div>
+    </div>
+</body>
+</html>
